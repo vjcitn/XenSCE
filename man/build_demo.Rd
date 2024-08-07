@@ -9,3 +9,7 @@ build_demo()
 \description{
 build a XenSCE instance for GBM demo data from TENx
 }
+\note{
+This can take some time to run, especially if no resources
+have been cached yet.
+}

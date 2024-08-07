@@ -6,6 +6,9 @@
 \usage{
 cache_assets(cache = BiocFileCache::BiocFileCache())
 }
+\arguments{
+\item{cache}{instance of BiocFileCache::BiocFileCache()}
+}
 \description{
 return paths to cached entities after retrieving and caching them if needed
 }
