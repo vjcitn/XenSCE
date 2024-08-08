@@ -13,3 +13,9 @@ build a XenSCE instance for GBM demo data from TENx
 This can take some time to run, especially if no resources
 have been cached yet.
 }
+\examples{
+if (interactive()) {
+  gbmdemo = build_demo()
+  gbmdemo
+}
+}

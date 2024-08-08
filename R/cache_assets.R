@@ -26,6 +26,11 @@ is_present = function(cache, x) {
 #' @note On first usage around 4GB of data, mostly parquet, will be downloaded
 #' and added to cache.
 #' @param cache instance of BiocFileCache::BiocFileCache()
+#' @examples
+#' if (interactive()) {
+#'    chk = yesno::yesno("If not already cached, this function will download 4GB of files.  Proceed?")
+#'    if (chk) cache_assets()
+#' }
 #' @export
 cache_assets = function(cache=BiocFileCache::BiocFileCache()) {
   urls = xenbase(xenassets)
@@ -38,6 +43,8 @@ cache_assets = function(cache=BiocFileCache::BiocFileCache()) {
   names(pas) = xenassets
   pas
 }
+
+# NB I don't like these below, maybe delete after August
 
 #' helper for caching a built demo XenSCE
 #' @param src a XenSCE instance

@@ -14,10 +14,10 @@ Description: Define a relatively light class for managing Xenium data.  Totally
 License: Artistic-2.0
 Encoding: UTF-8
 Depends: R (>= 4.1)
-Suggests: knitr, testthat, BiocStyle
+Suggests: knitr, testthat, BiocStyle, yesno
 Imports: SingleCellExperiment, BiocFileCache, ParquetDataFrame,
 	Matrix, S4Vectors, SummarizedExperiment, methods,
-	utils
+	utils, HDF5Array
 VignetteBuilder: knitr
 biocViews: Infrastructure
 RoxygenNote: 7.3.2

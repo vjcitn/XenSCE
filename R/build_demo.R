@@ -6,6 +6,11 @@
 #' @rawNamespace import(Matrix, except=c(unname, expand))
 #' @note This can take some time to run, especially if no resources
 #' have been cached yet.
+#' @examples
+#' if (interactive()) {
+#'   gbmdemo = build_demo()
+#'   gbmdemo
+#' }
 #' @export
 build_demo = function() {
  paths = cache_assets()

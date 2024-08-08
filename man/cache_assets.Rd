@@ -16,3 +16,9 @@ return paths to cached entities after retrieving and caching them if needed
 On first usage around 4GB of data, mostly parquet, will be downloaded
 and added to cache.
 }
+\examples{
+if (interactive()) {
+   chk = yesno::yesno("If not already cached, this function will download 4GB of files.  Proceed?")
+   if (chk) cache_assets()
+}
+}
