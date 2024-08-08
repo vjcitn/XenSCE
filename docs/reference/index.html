@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">XenSCE</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1</span>
       </span>
     </div>
 
@@ -59,6 +59,10 @@
         </td>
         <td><p>build a XenSCE instance for GBM demo data from TENx</p></td>
       </tr><tr><td>
+          <p><code><a href="build_panc_subset.html">build_panc_subset()</a></code> </p>
+        </td>
+        <td><p>build a XenSCE instance based on the SFEData XeniumOutput element</p></td>
+      </tr><tr><td>
           <p><code><a href="cache_assets.html">cache_assets()</a></code> </p>
         </td>
         <td><p>return paths to cached entities after retrieving and caching them if needed</p></td>
@@ -67,17 +71,45 @@
         </td>
         <td><p>helper for caching a built demo XenSCE</p></td>
       </tr><tr><td>
+          <p><code><a href="cache_panc_subset.html">cache_panc_subset()</a></code> </p>
+        </td>
+        <td><p>cache and/or retrieve path to zipped pancreas subset (originally from SFEData)</p></td>
+      </tr><tr><td>
+          <p><code><a href="e2sym.html">e2sym()</a></code> </p>
+        </td>
+        <td><p>helper function to map ENS ids to symbols</p></td>
+      </tr><tr><td>
+          <p><code><a href="e79sym.html">e79sym</a></code> </p>
+        </td>
+        <td><p>mapping from ENSG to symbols based on EnsDb.Hsapiens.v79</p></td>
+      </tr><tr><td>
+          <p><code><a href="getCellBoundaries-XenSCE-method.html">getCellBoundaries(<i>&lt;XenSCE&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>method for cell boundary extraction</p></td>
+      </tr><tr><td>
           <p><code><a href="getCellBoundaries.html">getCellBoundaries()</a></code> </p>
         </td>
         <td><p>method for cell boundary extraction</p></td>
+      </tr><tr><td>
+          <p><code><a href="getNucleusBoundaries-XenSCE-method.html">getNucleusBoundaries(<i>&lt;XenSCE&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>method for nucleus boundary extraction</p></td>
       </tr><tr><td>
           <p><code><a href="getNucleusBoundaries.html">getNucleusBoundaries()</a></code> </p>
         </td>
         <td><p>method for nucleus boundary extraction</p></td>
       </tr><tr><td>
+          <p><code><a href="getTranscripts-XenSCE-method.html">getTranscripts(<i>&lt;XenSCE&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>method for transcript extraction</p></td>
+      </tr><tr><td>
           <p><code><a href="getTranscripts.html">getTranscripts()</a></code> </p>
         </td>
         <td><p>method for transcript extraction</p></td>
+      </tr><tr><td>
+          <p><code><a href="panc_sub.html">panc_sub</a></code> </p>
+        </td>
+        <td><p>example XenSCE instance based on pancreas subset from SFEData XeniumOutput</p></td>
       </tr><tr><td>
           <p><code><a href="retrieve_demo.html">retrieve_demo()</a></code> </p>
         </td>
@@ -89,7 +121,7 @@
       </tr><tr><td>
           <p><code><a href="xdims.html">xdims()</a></code> </p>
         </td>
-        <td><p>helper function for XenSCE show method</p></td>
+        <td><p>helper function for XenSCE show method, producing dimensions for geometry information</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
