@@ -2,10 +2,15 @@
 % Please edit documentation in R/XenSCE_class.R
 \name{xdims}
 \alias{xdims}
-\title{helper function for XenSCE show method}
+\title{helper function for XenSCE show method, producing dimensions for
+geometry information}
 \usage{
 xdims(x)
 }
+\arguments{
+\item{x}{instance of XenSCE}
+}
 \description{
-helper function for XenSCE show method
+helper function for XenSCE show method, producing dimensions for
+geometry information
 }

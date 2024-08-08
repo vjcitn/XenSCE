@@ -6,6 +6,9 @@
 \usage{
 \S4method{show}{XenSCE}(object)
 }
+\arguments{
+\item{object}{instance of XenSCE}
+}
 \description{
 summarize XenSCE
 }

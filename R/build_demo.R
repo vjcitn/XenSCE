@@ -12,13 +12,13 @@ build_demo = function() {
  mat.tgzpath = paths[["cell_feature_matrix.tar.gz"]]
  td = tempdir()
  untar(mat.tgzpath, exdir=td)
- newp = dir(file.path(td, "cell_feature_matrix"), full=TRUE)
+ newp = dir(file.path(td, "cell_feature_matrix"), full.names=TRUE)
  matpa = grep("mtx", newp, value=TRUE)
  coumat = Matrix::readMM(matpa)
  barpa = grep("barco", newp, value=TRUE)
- bardf = read.delim(barpa, sep="\t", h=FALSE) # V1 needed
+ bardf = read.delim(barpa, sep="\t", header=FALSE) # V1 needed
  feapa = grep("features", newp, value=TRUE)
- feadf = read.delim(feapa, sep="\t", h=FALSE) # V1 needed
+ feadf = read.delim(feapa, sep="\t", header=FALSE) # V1 needed
  rownames(coumat) = feadf$V1
  colnames(coumat) = bardf$V1
  colnames(feadf) = c("ensid", "symbol", "type")
