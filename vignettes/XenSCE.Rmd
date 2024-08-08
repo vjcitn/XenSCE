@@ -39,15 +39,26 @@ can be used in any session to obtain the instance.
 
 ## A quick look
 
-```{r do1, message=FALSE}
+### Small in-memory example
+
+```{r dolit}
+library(XenSCE)
+data(panc_sub)
+panc_sub
+plot(panc_sub$x_centroid, panc_sub$y_centroid, pch="." , cex=1.5, xlab="x", ylab="y", main="cell centroids")
+```
+
+### Large disk-based example
+If you are interested in working with the 10X GBM data, use the following:
+```{r do1, message=FALSE, eval=FALSE}
 library(XenSCE)
 myxen = retrieve_demo() # steps noted above were done
 myxen
 ```
 
-Let's sample the cell centroid coordinates and plot.
+To sample the cell centroid coordinates and plot, use:
 
-```{r do2,fig.height=4, fig.width=4}
+```{r do2,fig.height=4, fig.width=4, eval=FALSE}
 set.seed(1234)
 sinds = sort(sample(seq_len(ncol(myxen)), 5000))
 plot(myxen$x_centroid[sinds], -myxen$y_centroid[sinds],
