@@ -16,5 +16,6 @@ example XenSCE instance based on pancreas subset from SFEData XeniumOutput
 \examples{
 data(panc_sub)
 head(panc_sub)
+plot(panc_sub$x_centroid, panc_sub$y_centroid, pch="." , cex=1.5, xlab="x", ylab="y", main="cell centroids")
 }
 \keyword{datasets}

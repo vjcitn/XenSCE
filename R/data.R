@@ -13,4 +13,5 @@
 #' @examples
 #' data(panc_sub)
 #' head(panc_sub)
+#' plot(panc_sub$x_centroid, panc_sub$y_centroid, pch="." , cex=1.5, xlab="x", ylab="y", main="cell centroids")
 "panc_sub"

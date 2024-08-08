@@ -68,7 +68,17 @@
 <div class="section level1">
 <div class="page-header"><h1 id="xensce">XenSCE<a class="anchor" aria-label="anchor" href="#xensce"></a>
 </h1></div>
-<p>sketch of S4 methods for Xenium demonstration data in Open Storage Network</p>
+<p>This package experimentally explores an S4 class and methods for 10x Xenium demonstration data in Open Storage Network.</p>
+<p>The package</p>
+<ul>
+<li><p>defines a class <code>XenSCE</code> that extends SingleCellExperiment, accommodating geometry information for cells, nuclei, and transcripts in ParquetDataFrame or DataFrame instances</p></li>
+<li><p>includes functions to retrieve example data from NSF Open Storage Network buckets</p></li>
+<li><p>includes a small example <code>panc_sub</code> derived from <a href="https://bioconductor.org/packages/SFEData/" class="external-link">SFEData</a> XeniumOutput</p></li>
+</ul>
+<p>A view of the <code>panc_sub</code> XenSCE:</p>
+<p><img src="reference/figures/pancsub.png"></p>
+<p>Compare to the morphology_focus_0001.ome.tif found in the morphology_focus component of SFEData XeniumOutput</p>
+<p><img src="reference/figures/img0001.png"></p>
 </div>
   </div>
 
