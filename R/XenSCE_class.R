@@ -5,6 +5,7 @@ setClass("XenSCE", contains="SingleCellExperiment", slots=c(cellbounds="ParquetD
   transcripts="ParquetDataFrame", nucbounds="ParquetDataFrame"))
 
 #' summarize XenSCE
+#' @importFrom methods callNextMethod new slot
 #' @export
 setMethod("show", "XenSCE", function(object) {
   callNextMethod(); 

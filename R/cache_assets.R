@@ -15,18 +15,20 @@ xenassets = c(
   "cell_feature_matrix.tar.gz",
   "cells.csv.gz")
 
-#' return paths to cached entities after retrieving and caching them if needed
-#' @import BiocFileCache
-#' @note On first usage around 4GB of data, mostly parquet, will be downloaded
-#' and added to cache.
-#' @export
-cache_assets = function(cache=BiocFileCache::BiocFileCache()) {
-  urls = xenbase(xenassets)
-  is_present = function(cache, x) {
+is_present = function(cache, x) {
     chk = BiocFileCache::bfcquery(cache, basename(x))
     if (nrow(chk)>0) return(chk[nrow(chk),]$rpath)
     FALSE
     }
+
+#' return paths to cached entities after retrieving and caching them if needed
+#' @import BiocFileCache
+#' @note On first usage around 4GB of data, mostly parquet, will be downloaded
+#' and added to cache.
+#' @param cache instance of BiocFileCache::BiocFileCache()
+#' @export
+cache_assets = function(cache=BiocFileCache::BiocFileCache()) {
+  urls = xenbase(xenassets)
   pas = lapply(urls, function(src) {
       ans = is_present(cache, src)
       if (isFALSE(ans)) ans = BiocFileCache::bfcadd(cache, rname=src,
@@ -37,3 +39,28 @@ cache_assets = function(cache=BiocFileCache::BiocFileCache()) {
   pas
 }
 
+#' helper for caching a built demo XenSCE
+#' @param src a XenSCE instance
+#' @param cache instance of BiocFileCache::BiocFileCache()
+#' @note Cache will hold an RDS file gbm_xen_demo.rds.
+#' @return zero if `gbm_xen_demo.rds` is already present
+#' in cache; otherwise result of BiocFileCache::bfcadd().
+#' @export
+cache_demo = function(src, cache=BiocFileCache::BiocFileCache()) {
+  stopifnot(inherits(src, "XenSCE"))
+  td = tempdir()
+  tst = is_present(cache, "gbm_xen_demo.rds")
+  if (!isFALSE(tst)) return(0)
+  tf = file.path(td, "gbm_xen_demo.rds")
+  saveRDS(src, tf)
+  BiocFileCache::bfcadd(cache, rname=tf, action="move", download=FALSE)
+}
+ 
+#' retrieve cached demo XenSCE
+#' @param cache instance of BiocFileCache::BiocFileCache()
+#' @export
+retrieve_demo = function(cache=BiocFileCache::BiocFileCache()) { 
+  tst = is_present(cache, "gbm_xen_demo.rds")
+  if (isFALSE(tst)) stop("please use build_demo and cache_demo to populate cache")
+  readRDS(tst)
+}
