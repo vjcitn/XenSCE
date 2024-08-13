@@ -41,7 +41,7 @@ can be used in any session to obtain the instance.
 
 ### Small in-memory example
 
-```{r dolit}
+```{r dolit, fig.width=6, fig.height=6}
 library(XenSCE)
 data(panc_sub)
 panc_sub
@@ -69,3 +69,21 @@ Compare the basic layout to the 'summary' visualization
 shipped with the data.
 
 ![from site](qcimg.png)
+
+## Clipping and visualizing
+
+`clip_rect` is an endomorphism that restricts the cells in an XenSCE instance
+to those with centroids in given boundaries in x and y.
+By default, cell centroid and transcript locations are added.
+
+
+```{r dosimpa,fig.height=6, fig.width=6}
+plotCellBoundaries(clip_rect(panc_sub, xlim=c(600,850), ylim=c(500,750)), add_tx=FALSE)
+```
+
+With transcript locations:
+
+```{r dosimp,fig.height=6, fig.width=6}
+plotCellBoundaries(clip_rect(panc_sub, xlim=c(600,850), ylim=c(500,750)))
+```
+
