@@ -11,6 +11,8 @@ cache_sfeLung_ntx(
 }
 \arguments{
 \item{cache}{defaults to BiocFileCache::BiocFileCache()}
+
+\item{url}{location where zip file can be retrieved}
 }
 \description{
 cache and/or retrieve path to an SFE of V1 lung demo data from 10x

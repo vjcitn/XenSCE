@@ -24,7 +24,7 @@ plotCellBoundaries(
 
 \item{add_tx}{logical(1)}
 
-\item{tx_cent}{logical(1)}
+\item{tx_cex}{numeric(1)}
 }
 \description{
 render boundaries of cells with optional centroid positions and transcript positions

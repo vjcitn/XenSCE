@@ -19,11 +19,14 @@ bfeatsInBox = function (xsce, feat="cellbounds", xlim, ylim)
     fb[inds,]
 }
 
-txfeatsInBox = function (xsce, feat="transcripts", xlim, ylim) 
+txfeatsInBox = function (xsce, feat="transcripts", xlim, ylim)  # may have colname x or x_location etc.
 {
     fb = slot(xsce, feat)
-    xc = fb[,"x"]
-    yc = fb[,"y"]
+    nms = names(fb)
+    if ("x" %in% nms) use = c(x="x", y="y")
+    if ("x_location" %in% nms) use = c(x="x_location", y="y_location")
+    xc = fb[,use["x"]]
+    yc = fb[,use["y"]]
     inds = which(xc >= xlim[1] & xc <= xlim[2] & yc >= ylim[1] & 
         yc <= ylim[2])
     fb[inds,]
@@ -39,9 +42,9 @@ clip_rect = function(xsce, xlim, ylim) {
   nn = namesInBox(xsce, xlim, ylim)
   stopifnot(length(nn)>0)
   ini = xsce[, nn]
-  cb = bfeatsInBox(sce, xlim=xlim, ylim=ylim)
-  nb = bfeatsInBox(sce, "nucbounds", xlim, ylim)
-  tloc = txfeatsInBox(sce, "transcripts", xlim, ylim)
+  cb = bfeatsInBox(ini, xlim=xlim, ylim=ylim)
+  nb = bfeatsInBox(ini, "nucbounds", xlim, ylim)
+  tloc = txfeatsInBox(ini, "transcripts", xlim, ylim)
   slot(ini, "cellbounds") = cb
   slot(ini, "nucbounds") = nb
   slot(ini, "transcripts") = tloc
@@ -54,7 +57,7 @@ clip_rect = function(xsce, xlim, ylim) {
 #' @param cent_col character(1) default to "red"
 #' @param cent_cex numeric(1) default to 0.2
 #' @param add_tx logical(1)
-#' @param tx_cent logical(1)
+#' @param tx_cex numeric(1)
 #' @examples
 #' dem = build_panc_subset()
 #' plotCellBoundaries(clip_rect(dem, xlim=c(600,850), ylim=c(500,750)))

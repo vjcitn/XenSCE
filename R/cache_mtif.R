@@ -12,6 +12,7 @@ cache_mtif = function(cache=BiocFileCache::BiocFileCache(),
 
 #' cache and/or retrieve path to an SFE of V1 lung demo data from 10x
 #' @param cache defaults to BiocFileCache::BiocFileCache()
+#' @param url location where zip file can be retrieved
 #' @note Lacks transcript coordinates
 cache_sfeLung_ntx = function(cache=BiocFileCache::BiocFileCache(), 
    url="https://mghp.osn.xsede.org/bir190004-bucket01/BiocXenData/sfeLung.zip") {
@@ -23,6 +24,7 @@ cache_sfeLung_ntx = function(cache=BiocFileCache::BiocFileCache(),
 
 #' cache and/or retrieve path to an SFE of V1 lung demo data from 10x
 #' @param cache defaults to BiocFileCache::BiocFileCache()
+#' @param url location where zip file can be retrieved
 #' @note We are explicitly avoiding declaring reliance on terra
 #' or SpatialFeatureExperiment, to keep package weight low.
 #' Thus the example will fail unless these are already present.

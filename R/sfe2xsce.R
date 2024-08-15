@@ -56,6 +56,7 @@ rowgeom2df = function(sfe, elem="txSpots", BPPARAM) {
 
 
 #' convert SpatialFeatureExperiment to XenSCE
+#' @import BiocParallel
 #' @param sfe SpatialFeatureExperiment instance
 #' @param BPPARAM see BiocParallel
 #' @examples
