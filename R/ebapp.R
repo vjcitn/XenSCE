@@ -14,7 +14,10 @@ demoapp = function(simple=FALSE) {
      helpText("EBImage explorer"),
      fileInput("inimg", "file"),
      numericInput("scalefactor", "multfac", min=1, max=50, value=10,step=1),
-     sliderInput("blursig", "sigma for blur", min=1, max=100, value=50)
+     sliderInput("blursig", "sigma for blur", min=1, max=100, value=50),
+     helpText("vertical or horizontal reflection:"),
+     checkboxInput("flipV", "flipV", value=FALSE),
+     checkboxInput("flipH", "flipH", value=FALSE)
     ),
     mainPanel(
      tabsetPanel(
@@ -35,7 +38,10 @@ demoapp = function(simple=FALSE) {
       validate(need(nchar(input$inimg)>0, "pick img"))
       dat = input$inimg$datapath 
       }
-    EBImage::readImage( dat )
+    ans = EBImage::readImage( dat )
+    if (input$flipV) ans = flip(ans)
+    if (input$flipH) ans = flop(ans)
+    ans
     })
    output$basic = renderPlot({
     img = getImg()

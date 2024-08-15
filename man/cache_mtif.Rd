@@ -2,7 +2,7 @@
 % Please edit documentation in R/cache_mtif.R
 \name{cache_mtif}
 \alias{cache_mtif}
-\title{cache and/or retrieve an ome.tif file for demonstration}
+\title{cache and/or retrieve path to an ome.tif file for demonstration}
 \usage{
 cache_mtif(
   cache = BiocFileCache::BiocFileCache(),
@@ -16,5 +16,5 @@ cache_mtif(
 \item{url}{location where tiff file can be retrieved}
 }
 \description{
-cache and/or retrieve an ome.tif file for demonstration
+cache and/or retrieve path to an ome.tif file for demonstration
 }
