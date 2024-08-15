@@ -35,6 +35,6 @@ build_panc_subset = function(cache=BiocFileCache::BiocFileCache()) {
   colnames(sce) = sce$cell_id
   syms = DataFrame(symbol=e2sym(rownames(sce)))
   rowData(sce) = syms
-  new("XenSCE", sce, transcripts=DataFrame(tx), nucbounds=DataFrame(nb),
+  new("XenSCE", as(sce, "SpatialExperiment"), transcripts=DataFrame(tx), nucbounds=DataFrame(nb),
     cellbounds = DataFrame(cb))
 }

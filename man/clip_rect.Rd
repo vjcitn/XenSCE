@@ -2,7 +2,8 @@
 % Please edit documentation in R/plotCellBoundaries.R
 \name{clip_rect}
 \alias{clip_rect}
-\title{restrict XenSCE to cells with centroids in specified rectangle}
+\title{restrict XenSCE to cells with centroids in specified rectangle,
+also restrict boundary and transcript location features}
 \usage{
 clip_rect(xsce, xlim, ylim)
 }
@@ -14,5 +15,6 @@ clip_rect(xsce, xlim, ylim)
 \item{ylim}{numeric(2)}
 }
 \description{
-restrict XenSCE to cells with centroids in specified rectangle
+restrict XenSCE to cells with centroids in specified rectangle,
+also restrict boundary and transcript location features
 }

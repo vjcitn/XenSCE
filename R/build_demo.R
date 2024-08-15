@@ -4,6 +4,7 @@
 #' @importFrom utils read.csv read.delim untar
 #' @importFrom SummarizedExperiment rowData<- colData<-
 #' @rawNamespace import(Matrix, except=c(unname, expand))
+#' @importClassesFrom SpatialExperiment SpatialExperiment
 #' @note This can take some time to run, especially if no resources
 #' have been cached yet.
 #' @examples
@@ -38,7 +39,7 @@ build_demo = function() {
  cb = ParquetDataFrame(cbpath)
  nbpath = paths[["nucleus_boundaries.parquet"]]
  nb = ParquetDataFrame(nbpath)
- new("XenSCE", sce, transcripts=tx, cellbounds=cb,
+ new("XenSCE", as(sce, "SpatialExperiment"), transcripts=tx, cellbounds=cb,
     nucbounds=nb)
 }
  

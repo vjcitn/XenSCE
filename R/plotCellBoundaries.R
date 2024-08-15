@@ -1,13 +1,36 @@
 namesInBox = function (xsce, xlim, ylim) 
 {
-    xc = xsce$x_centroid
-    yc = xsce$y_centroid
+    if (!requireNamespace("SpatialExperiment")) stop("install SpatialExperiment to use this function")
+    cmat = SpatialExperiment::spatialCoords(xsce)
+    xc = cmat[,"x_centroid"]
+    yc = cmat[,"y_centroid"]
     inds = which(xc >= xlim[1] & xc <= xlim[2] & yc >= ylim[1] & 
         yc <= ylim[2])
     unique(colnames(xsce[, inds]))
 }
 
-#' restrict XenSCE to cells with centroids in specified rectangle
+bfeatsInBox = function (xsce, feat="cellbounds", xlim, ylim) 
+{
+    fb = slot(xsce, feat)
+    xc = fb[,"vertex_x"]
+    yc = fb[,"vertex_y"]
+    inds = which(xc >= xlim[1] & xc <= xlim[2] & yc >= ylim[1] & 
+        yc <= ylim[2])
+    fb[inds,]
+}
+
+txfeatsInBox = function (xsce, feat="transcripts", xlim, ylim) 
+{
+    fb = slot(xsce, feat)
+    xc = fb[,"x"]
+    yc = fb[,"y"]
+    inds = which(xc >= xlim[1] & xc <= xlim[2] & yc >= ylim[1] & 
+        yc <= ylim[2])
+    fb[inds,]
+}
+
+#' restrict XenSCE to cells with centroids in specified rectangle,
+#' also restrict boundary and transcript location features
 #' @param xsce XenSCE instance
 #' @param xlim numeric(2)
 #' @param ylim numeric(2)
@@ -15,7 +38,14 @@ namesInBox = function (xsce, xlim, ylim)
 clip_rect = function(xsce, xlim, ylim) {
   nn = namesInBox(xsce, xlim, ylim)
   stopifnot(length(nn)>0)
-  xsce[, nn]
+  ini = xsce[, nn]
+  cb = bfeatsInBox(sce, xlim=xlim, ylim=ylim)
+  nb = bfeatsInBox(sce, "nucbounds", xlim, ylim)
+  tloc = txfeatsInBox(sce, "transcripts", xlim, ylim)
+  slot(ini, "cellbounds") = cb
+  slot(ini, "nucbounds") = nb
+  slot(ini, "transcripts") = tloc
+  ini
 }
 
 #' render boundaries of cells with optional centroid positions and transcript positions

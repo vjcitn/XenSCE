@@ -1,7 +1,8 @@
 
 #' define container for Xenium demo data
+#' @importClassesFrom SpatialExperiment SpatialExperiment
 #' @export
-setClass("XenSCE", contains="SingleCellExperiment", slots=c(cellbounds="DataFrame",
+setClass("XenSCE", contains="SpatialExperiment", slots=c(cellbounds="DataFrame",
   transcripts="DataFrame", nucbounds="DataFrame"))
 
 #' summarize XenSCE
@@ -10,7 +11,7 @@ setClass("XenSCE", contains="SingleCellExperiment", slots=c(cellbounds="DataFram
 #' @export
 setMethod("show", "XenSCE", function(object) {
   callNextMethod(); 
-  cat("Parquet elements:\n")
+  cat("Geometry elements:\n")
   print(xdims(object)) 
 } )
 
