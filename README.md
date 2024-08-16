@@ -29,4 +29,4 @@ Compare to the morphology_focus_0001.ome.tif found in the morphology_focus compo
 ![](man/figures/img0001.png)
 
 
-A [pkgdown site](https://vjcitn.github.com/XenSCE) is available.
+A [pkgdown site](https://vjcitn.github.io/XenSCE) is available.
