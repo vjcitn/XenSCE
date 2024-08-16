@@ -3,6 +3,14 @@
 This package experimentally explores an
 S4 class and methods for 10x Xenium demonstration data in Open Storage Network.
 
+## Installation
+```
+BiocManager::install("LTLA/ParquetDataFrame") # DelayedArray approach
+BiocManager::install("vjcitn/XenSCE")
+```
+
+## Basics
+
 The package
 
 - defines a class `XenSCE` that extends SingleCellExperiment, accommodating
@@ -19,3 +27,6 @@ A view of the `panc_sub` XenSCE:
 Compare to the morphology_focus_0001.ome.tif found in the morphology_focus component of SFEData XeniumOutput
 
 ![](man/figures/img0001.png)
+
+
+A [pkgdown site](https://vjcitn.github.com/XenSCE) is available.
