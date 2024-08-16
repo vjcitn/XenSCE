@@ -14,28 +14,78 @@ output:
     toc: yes
 ---
 
+```{css style settings, echo = FALSE}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+```
+
 # Introduction
 
-This package is based on a dataset distributed by TENx genomics
-as [Human FFPE Brain Cancer Data](https://www.10xgenomics.com/datasets/ffpe-human-brain-cancer-data-with-human-immuno-oncology-profiling-panel-and-custom-add-on-1-standard).  We have taken several components of the distribution
-and placed them in an NSF Open Storage Network bucket.
+## Motivation
 
-A basic concern is to acquire the data for local computation.
-The `cache_assets` function in this package will download
+Numerous groups are working on methodology for analyzing
+new data resources emerging from spatial transcriptomics experiments.
+The "computing technology stack" necessary to work
+with such data is complex.  The following
+[comment](https://spatialdata.scverse.org/en/latest/tutorials/notebooks/notebooks/examples/models1.html)
+(Aug 16 2024) from the scverse group is characteristic:
+
+> The SpatialData Zarr format, which is described in our design doc, is an extension of the OME-NGFF specification, which makes use of the OME-Zarr, the AnnData Zarr and the Parquet file formats. We need to use these combination of technologies because currently OME-NGFF does not provide all the fundamentals required for storing spatial omics dataset; nevertheless, we try to stay as close as OME-NGFF as possible, and we are contributing to ultimately make spatial omics support available in pure OME-NGFF.
+
+In Bioconductor 3.19, we might be committed to all these technologies (which 
+include but do not mention HDF5) plus
+R, reticulate, basilisk, and sf to have a widely functional solution.
+Attaching the [Voyager](https://bioconductor.org/packages/Voyager) 
+package leads to loading over 100 associated packages.
+The XenSCE package is intended to explore the balance between functionality
+and high dependency load specifically for the analysis of outputs
+from 10x Xenium experiments.  The XenSCE class extends
+[SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) to optionally
+include references to parquet
+files that manage voluminous geometry data; geometry can also be handled as DataFrame for sufficiently
+low volume experiments.
+
+
+## Data
+
+This package is based on publicly available datasets.
+
+- **Pancreas sample**.  Obtainable via `data(panc_sub)` this is derived from
+```
+SpatialFeatureExperiment::readXenium(SFEData::XeniumOutput("v2"))
+```
+but the assay has been replaced with an equivalent dgCMatrix instance, and
+the geometry data are provided as thin DataFrame instances (thin meaning
+each coordinate has a separate row, whereas the SpatialFeatureExperiment
+uses simple features to organize geometry information on cells, nuclei,
+and transcripts.
+
+- **Human brain** [FFPE Glioblastoma Data](https://www.10xgenomics.com/datasets/ffpe-human-brain-cancer-data-with-human-immuno-oncology-profiling-panel-and-custom-add-on-1-standard).  We have taken several components of the distribution
+and placed them in an NSF Open Storage Network bucket.  The `cache_assets` function in this package will download
 and cache about 4GB of compressed sparse matrix and parquet
 data files; it returns the paths to these
 resources.  The `build_demo` function creates an instance
-of `XenSCE`.  This class extends [SingleCellExperiment](https://bioconductor.org/packages/SingleCellExperiment) to include references to parquet
-files that manage voluminous geometry data.
+of `XenSCE`.  
 
+
+- **Human lung** [FFPE Lung cancer dataset](https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_outs.zip).  We used scripts distributed by scverse to create a zarr-based representation, and
+used `readXenium` on the 10x distribution.  Use `example(sfe2xsce)` to retrieve and cache and transform
+the SpatialFeatureExperiment to a XenSCE instance.
+
+<!--
 ## Data retrieval and caching
 
-Use `cache_assets()` to retrieve data from the web.  Use
+Use `cache_assets()` to retrieve brain/GBM data from the web.  Use
 `x = build_demo()` to produce `x`, an instance of `XenSCE`.
 Use `cache_demo(x)` to save this in cache, and
 `y = retrieve_demo()` to restore the cached image
 in `y`.  Once this cycle has been completed, `retrieve_demo`
 can be used in any session to obtain the instance.
+-->
 
 ## A quick look
 

@@ -9,7 +9,12 @@
 <url><loc>https://github.com/vjcitn/XenSCE/reference/build_panc_subset.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_assets.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_demo.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/cache_mtif.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_panc_subset.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/cache_sfeLung.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/cache_sfeLung_ntx.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/clip_rect.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/demoapp.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/e2sym.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/e79sym.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getCellBoundaries-XenSCE-method.html</loc></url>
@@ -20,7 +25,9 @@
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getTranscripts.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/index.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/panc_sub.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/plotCellBoundaries.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/retrieve_demo.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/sfe2xsce.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/show-XenSCE-method.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/xdims.html</loc></url>
 </urlset>

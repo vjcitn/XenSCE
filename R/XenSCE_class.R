@@ -54,3 +54,14 @@ setGeneric("getNucleusBoundaries", function(x) standardGeneric("getNucleusBounda
 #' @param x instance of XenSCE
 #' @export
 setMethod("getNucleusBoundaries", "XenSCE", function(x) slot(x, "nucbounds"))
+
+chkxsce = function(object) {
+ nc = ncol(object)
+ if (!isTRUE(length(colnames(object))==nc)) return("colnames(object) has incorrect length")
+ cc = SpatialExperiment::spatialCoords(object)
+ nn = colnames(cc)[1:2]
+ if (!isTRUE(all.equal(nn, c("x_centroid", "y_centroid")))) return("first two elements of spatialCoords(object) are not 'x_centroid', 'y_centroid'")
+ TRUE
+}
+
+setValidity("XenSCE", method=chkxsce)

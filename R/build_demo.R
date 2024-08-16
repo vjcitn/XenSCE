@@ -6,7 +6,8 @@
 #' @rawNamespace import(Matrix, except=c(unname, expand))
 #' @importClassesFrom SpatialExperiment SpatialExperiment
 #' @note This can take some time to run, especially if no resources
-#' have been cached yet.
+#' have been cached yet.  The data are derived from
+#' `https://www.10xgenomics.com/datasets/ffpe-human-brain-cancer-data-with-human-immuno-oncology-profiling-panel-and-custom-add-on-1-standard`.
 #' @examples
 #' if (interactive()) {
 #'   gbmdemo = build_demo()
@@ -39,7 +40,11 @@ build_demo = function() {
  cb = ParquetDataFrame(cbpath)
  nbpath = paths[["nucleus_boundaries.parquet"]]
  nb = ParquetDataFrame(nbpath)
- new("XenSCE", as(sce, "SpatialExperiment"), transcripts=tx, cellbounds=cb,
+ spe = as(sce, "SpatialExperiment")
+ SpatialExperiment::spatialCoords(spe) = data.matrix(
+        as.data.frame(colData(spe)[,c("x_centroid", "y_centroid")]))
+ colnames(spe) = spe$cell_id
+ new("XenSCE", spe, transcripts=tx, cellbounds=cb,
     nucbounds=nb)
 }
  
