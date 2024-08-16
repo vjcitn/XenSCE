@@ -102,12 +102,7 @@ blockquote {
 </h3>
 <p>This package is based on publicly available datasets.</p>
 <ul>
-<li>
-<strong>Pancreas sample</strong>. Obtainable via <code>data(panc_sub)</code> this is derived from</li>
-</ul>
-<pre><code><span><span class="fu">SpatialFeatureExperiment</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/readXenium.html" class="external-link">readXenium</a></span><span class="op">(</span><span class="fu">SFEData</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/SFEData/man/XeniumOutput.html" class="external-link">XeniumOutput</a></span><span class="op">(</span><span class="st">"v2"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-<p>but the assay has been replaced with an equivalent dgCMatrix instance, and the geometry data are provided as thin DataFrame instances (thin meaning each coordinate has a separate row, whereas the SpatialFeatureExperiment uses simple features to organize geometry information on cells, nuclei, and transcripts.</p>
-<ul>
+<li><p><strong>Pancreas sample</strong>. Obtainable via <code>data(panc_sub)</code> this is derived from <code>SpatialFeatureExperiment::readXenium(SFEData::XeniumOutput("v2"))</code> but the assay has been replaced with an equivalent dgCMatrix instance, and the geometry data are provided as thin DataFrame instances (thin meaning each coordinate has a separate row, whereas the SpatialFeatureExperiment uses simple features to organize geometry information on cells, nuclei, and transcripts.</p></li>
 <li><p><strong>Human brain</strong> <a href="https://www.10xgenomics.com/datasets/ffpe-human-brain-cancer-data-with-human-immuno-oncology-profiling-panel-and-custom-add-on-1-standard" class="external-link">FFPE Glioblastoma Data</a>. We have taken several components of the distribution and placed them in an NSF Open Storage Network bucket. The <code>cache_assets</code> function in this package will download and cache about 4GB of compressed sparse matrix and parquet data files; it returns the paths to these resources. The <code>build_demo</code> function creates an instance of <code>XenSCE</code>.</p></li>
 <li><p><strong>Human lung</strong> <a href="https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_outs.zip" class="external-link">FFPE Lung cancer dataset</a>. We used scripts distributed by scverse to create a zarr-based representation, and used <code>readXenium</code> on the 10x distribution. Use <code>example(sfe2xsce)</code> to retrieve and cache and transform the SpatialFeatureExperiment to a XenSCE instance.</p></li>
 </ul>
@@ -128,7 +123,7 @@ can be used in any session to obtain the instance.
 <div class="section level4">
 <h4 id="small-in-memory-example">Small in-memory example<a class="anchor" aria-label="anchor" href="#small-in-memory-example"></a>
 </h4>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vjcitn/XenSCE">XenSCE</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">panc_sub</span><span class="op">)</span></span>
 <span><span class="va">panc_sub</span></span></code></pre></div>
@@ -151,7 +146,7 @@ can be used in any session to obtain the instance.
 <span><span class="co">## transcripts 367354   11</span></span>
 <span><span class="co">## cellbounds  156512    4</span></span>
 <span><span class="co">## nucbounds   154156    4</span></span></code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">panc_sub</span><span class="op">$</span><span class="va">x_centroid</span>, <span class="va">panc_sub</span><span class="op">$</span><span class="va">y_centroid</span>, pch<span class="op">=</span><span class="st">"."</span> , cex<span class="op">=</span><span class="fl">1.5</span>, xlab<span class="op">=</span><span class="st">"x"</span>, ylab<span class="op">=</span><span class="st">"y"</span>, main<span class="op">=</span><span class="st">"cell centroids"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="XenSCE_files/figure-html/dolit-1.png" width="576"></p>
 </div>
@@ -159,12 +154,12 @@ can be used in any session to obtain the instance.
 <h4 id="large-disk-based-example">Large disk-based example<a class="anchor" aria-label="anchor" href="#large-disk-based-example"></a>
 </h4>
 <p>If you are interested in working with the 10X GBM data, use the following:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vjcitn/XenSCE">XenSCE</a></span><span class="op">)</span></span>
 <span><span class="va">myxen</span> <span class="op">=</span> <span class="fu"><a href="../reference/retrieve_demo.html">retrieve_demo</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># steps noted above were done</span></span>
 <span><span class="va">myxen</span></span></code></pre></div>
 <p>To sample the cell centroid coordinates and plot, use:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
 <span><span class="va">sinds</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">myxen</span><span class="op">)</span><span class="op">)</span>, <span class="fl">5000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">myxen</span><span class="op">$</span><span class="va">x_centroid</span><span class="op">[</span><span class="va">sinds</span><span class="op">]</span>, <span class="op">-</span><span class="va">myxen</span><span class="op">$</span><span class="va">y_centroid</span><span class="op">[</span><span class="va">sinds</span><span class="op">]</span>,</span>
@@ -179,11 +174,11 @@ can be used in any session to obtain the instance.
 <h3 id="clipping-and-visualizing">Clipping and visualizing<a class="anchor" aria-label="anchor" href="#clipping-and-visualizing"></a>
 </h3>
 <p><code>clip_rect</code> is an endomorphism that restricts the cells in an XenSCE instance to those with centroids in given boundaries in x and y. By default, cell centroid and transcript locations are added.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plotCellBoundaries.html">plotCellBoundaries</a></span><span class="op">(</span><span class="fu"><a href="../reference/clip_rect.html">clip_rect</a></span><span class="op">(</span><span class="va">panc_sub</span>, xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">600</span>,<span class="fl">850</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">500</span>,<span class="fl">750</span><span class="op">)</span><span class="op">)</span>, add_tx<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="XenSCE_files/figure-html/dosimpa-1.png" width="576"></p>
 <p>With transcript locations:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plotCellBoundaries.html">plotCellBoundaries</a></span><span class="op">(</span><span class="fu"><a href="../reference/clip_rect.html">clip_rect</a></span><span class="op">(</span><span class="va">panc_sub</span>, xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">600</span>,<span class="fl">850</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">500</span>,<span class="fl">750</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="XenSCE_files/figure-html/dosimp-1.png" width="576"></p>
 </div>

@@ -55,9 +55,7 @@ low volume experiments.
 This package is based on publicly available datasets.
 
 - **Pancreas sample**.  Obtainable via `data(panc_sub)` this is derived from
-```
-SpatialFeatureExperiment::readXenium(SFEData::XeniumOutput("v2"))
-```
+`SpatialFeatureExperiment::readXenium(SFEData::XeniumOutput("v2"))`
 but the assay has been replaced with an equivalent dgCMatrix instance, and
 the geometry data are provided as thin DataFrame instances (thin meaning
 each coordinate has a separate row, whereas the SpatialFeatureExperiment
