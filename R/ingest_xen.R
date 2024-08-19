@@ -19,7 +19,9 @@ setClass("XenSPEP", contains="SpatialExperiment",  # spatial expt with parquet r
 #' @param object instance of XenSCE
 #' @export
 setMethod("show", "XenSPEP", function(object) {
-  callNextMethod();
+  cat("XenSPEP instance.  SCEcomponent:\n")
+  show(as(object, "SingleCellExperiment"))
+  cat("use spatialCoords() for cell centroids.\n")
   if (!slot(object, "loaded")) {
        cat("Geometry element paths (not loaded):\n")
        cat(sprintf(" %s\n %s\n %s\n", slot(object, "cellbounds_path"),
