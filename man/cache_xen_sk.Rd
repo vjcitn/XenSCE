@@ -31,14 +31,11 @@ if (interactive()) {
  dir.create(xpw <- file.path(td, "xen_sk_work"))
  unzip(pzip_path, exdir=xpw)
  mel = HDF5Array::loadHDF5SummarizedExperiment(file.path(xpw, "xen_sk"))
- mel
- cd = getwd()
- setwd(xpw)
+ mel = reset_parq_paths(mel, xpw)
  mel = loadGeometry(mel)
  print(slot(mel, "cbtab") |> head() |> dplyr::collect())
  print(slot(mel, "txtab") |> dplyr::count() |> dplyr::collect())
  plot(SpatialExperiment::spatialCoords(mel), pch=".",
    main="10x FFPE Human dermal melanoma sample")
- setwd(cd)
 }
 }

@@ -65,14 +65,12 @@ cache_sfeLung = function(cache=BiocFileCache::BiocFileCache(),
 #'  unzip(pzip_path, exdir=xpw)
 #'  prost = HDF5Array::loadHDF5SummarizedExperiment(file.path(xpw, "xen_prost"))
 #'  prost
-#'  cd = getwd()
-#'  setwd(xpw)
+#'  prost = reset_parq_paths(prost, xpw)
 #'  prost = loadGeometry(prost)
 #'  print(slot(prost, "cbtab") |> head() |> dplyr::collect())
 #'  print(slot(prost, "txtab") |> dplyr::count() |> dplyr::collect())
 #'  plot(SpatialExperiment::spatialCoords(prost), pch=".",
 #'    main="10x FFPE Human prostate adenocarcinoma sample")
-#'  setwd(cd)
 #' }
 #' @export
 cache_xen_prost = function(cache=BiocFileCache::BiocFileCache(), 
@@ -98,15 +96,12 @@ cache_xen_prost = function(cache=BiocFileCache::BiocFileCache(),
 #'  dir.create(xpw <- file.path(td, "xen_sk_work"))
 #'  unzip(pzip_path, exdir=xpw)
 #'  mel = HDF5Array::loadHDF5SummarizedExperiment(file.path(xpw, "xen_sk"))
-#'  mel
-#'  cd = getwd()
-#'  setwd(xpw)
+#'  mel = reset_parq_paths(mel, xpw)
 #'  mel = loadGeometry(mel)
 #'  print(slot(mel, "cbtab") |> head() |> dplyr::collect())
 #'  print(slot(mel, "txtab") |> dplyr::count() |> dplyr::collect())
 #'  plot(SpatialExperiment::spatialCoords(mel), pch=".",
 #'    main="10x FFPE Human dermal melanoma sample")
-#'  setwd(cd)
 #' }
 #' @export
 cache_xen_sk = function(cache=BiocFileCache::BiocFileCache(), 

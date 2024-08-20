@@ -52,6 +52,7 @@ clip_rect = function(xsce, xlim, ylim) {
 }
 
 #' render boundaries of cells with optional centroid positions and transcript positions
+#' @importFrom graphics points polygon
 #' @param xsce XenSCE instance
 #' @param add_cent logical(1)
 #' @param cent_col character(1) default to "red"

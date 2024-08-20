@@ -1,5 +1,6 @@
 #' cache and/or retrieve path to zipped pancreas subset (originally from SFEData)
 #' @param cache BiocFileCache::BiocFileCache() is default
+#' @importFrom methods as slot<-
 #' @examples
 #' cache_panc_subset()
 #' @export

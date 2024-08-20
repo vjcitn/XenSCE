@@ -1,7 +1,7 @@
 Package: XenSCE
 Date: 2024-08-14
 Title: Simple classes and methods for managing a Xenium exemplar dataset
-Version: 0.0.8
+Version: 0.0.9
 Authors@R: 
     c(person(
         "Vincent", "Carey", role = c("aut", "cre"),
@@ -18,7 +18,8 @@ Suggests: knitr, testthat, BiocStyle, yesno
 Imports: SpatialExperiment, BiocFileCache, ParquetDataFrame,
 	Matrix, S4Vectors, SummarizedExperiment, methods,
 	utils, HDF5Array, EBImage, shiny, SingleCellExperiment,
-	BiocParallel, terra, SpatialFeatureExperiment
+	BiocParallel, terra, SpatialFeatureExperiment, arrow,
+	TENxIO, dplyr
 VignetteBuilder: knitr
 biocViews: Infrastructure
 RoxygenNote: 7.3.2

@@ -32,13 +32,11 @@ if (interactive()) {
  unzip(pzip_path, exdir=xpw)
  prost = HDF5Array::loadHDF5SummarizedExperiment(file.path(xpw, "xen_prost"))
  prost
- cd = getwd()
- setwd(xpw)
+ prost = reset_parq_paths(prost, xpw)
  prost = loadGeometry(prost)
  print(slot(prost, "cbtab") |> head() |> dplyr::collect())
  print(slot(prost, "txtab") |> dplyr::count() |> dplyr::collect())
  plot(SpatialExperiment::spatialCoords(prost), pch=".",
    main="10x FFPE Human prostate adenocarcinoma sample")
- setwd(cd)
 }
 }
