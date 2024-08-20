@@ -49,6 +49,9 @@ include references to parquet
 files that manage voluminous geometry data; geometry can also be handled as DataFrame for sufficiently
 low volume experiments.
 
+As of 0.0.7 of XenSCE, a new class, XenSPEP, is provided to address
+parquet representation of cell, nucleus and transcript coordinates.
+
 
 ## Data
 
@@ -70,9 +73,25 @@ resources.  The `build_demo` function creates an instance
 of `XenSCE`.  
 
 
-- **Human lung** [FFPE Lung cancer dataset](https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_outs.zip).  We used scripts distributed by scverse to create a zarr-based representation, and
+- **Human lung** [FFPE Lung cancer dataset](https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard).  We used scripts distributed by scverse to create a zarr-based representation, and
 used `readXenium` on the 10x distribution.  Use `example(sfe2xsce)` to retrieve and cache and transform
 the SpatialFeatureExperiment to a XenSCE instance.
+
+- **Human dermal melanoma** [FFPE Human pan tissue dataset](https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-skin).  For this dataset, we
+retrieved the `outs.zip` file from this site and ran `XenSCE::ingest_xen`
+on the contents, producing a XenSPEP instance which was then saved
+in an HDF5-backed representation.  This, along with the parquet
+files for cell, nucleus, and transcript coordinates, are zipped together
+and placed in an Open Storage Network bucket for retrieval via
+`cache_xen_sk`.
+
+- **Human prostate adenocarcinoma** [FFPE Human pan tissue dataset](https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-prostate).  For this dataset, we
+retrieved the `outs.zip` file from this site and ran `XenSCE::ingest_xen`
+on the contents, producing a XenSPEP instance which was then saved
+in an HDF5-backed representation.  This, along with the parquet
+files for cell, nucleus, and transcript coordinates, are zipped together
+and placed in an Open Storage Network bucket for retrieval via
+`cache_xen_sk`.
 
 <!--
 ## Data retrieval and caching
@@ -97,6 +116,35 @@ plot(panc_sub$x_centroid, panc_sub$y_centroid, pch="." , cex=1.5, xlab="x", ylab
 ```
 
 ### Large disk-based example
+
+#### HDF5+parquet-backed examples
+
+We want to be able to accommodate very large numbers of
+cells and transcripts without heavy infrastructure
+commitments.  Examples with the XenSPEP class illustrate
+the current approach.
+
+We'll use the prostate adenocarcinoma 5K dataset to demonstrate.
+A 900MB zip file will be cached.
+```{r doprost1}
+prost = cache_xen_prost()
+```
+`prost` is the path to a zip file in a BiocFileCache instance.
+
+Create a folder to work in, and unzip.
+```{r doprost2}
+dir.create(xpw <- file.path(tempdir(), "prost_work"))
+unzip(prost, exdir=xpw)
+dir(xpw)
+```
+
+Restore the SpatialExperiment component.
+```{r doprost3}
+prostx = HDF5Array::loadHDF5SummarizedExperiment(file.path(xpw, "xen_prost"))
+prostx
+```
+
+#### Approaching obsolescence: GBM
 If you are interested in working with the 10X GBM data, use the following:
 ```{r do1, message=FALSE, eval=FALSE}
 library(XenSCE)

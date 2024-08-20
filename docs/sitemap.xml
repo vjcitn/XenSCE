@@ -5,6 +5,7 @@
 <url><loc>https://github.com/vjcitn/XenSCE/authors.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/index.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/XenSCE-class.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/XenSPEP-class.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/build_demo.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/build_panc_subset.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_assets.html</loc></url>
@@ -13,6 +14,8 @@
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_panc_subset.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_sfeLung.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_sfeLung_ntx.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/cache_xen_prost.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/cache_xen_sk.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/clip_rect.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/demoapp.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/e2sym.html</loc></url>
@@ -24,11 +27,15 @@
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getTranscripts-XenSCE-method.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getTranscripts.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/index.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/ingest_xen.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/loadGeometry-XenSPEP-method.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/loadGeometry.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/panc_sub.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/plotCellBoundaries.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/retrieve_demo.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/sfe2xsce.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/show-XenSCE-method.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/show-XenSPEP-method.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/xdims.html</loc></url>
 </urlset>
 
