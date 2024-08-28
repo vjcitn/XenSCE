@@ -91,7 +91,7 @@ on the contents, producing a XenSPEP instance which was then saved
 in an HDF5-backed representation.  This, along with the parquet
 files for cell, nucleus, and transcript coordinates, are zipped together
 and placed in an Open Storage Network bucket for retrieval via
-`cache_xen_sk`.
+`cache_xen_prost`.
 
 <!--
 ## Data retrieval and caching
