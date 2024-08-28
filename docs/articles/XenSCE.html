@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">XenSCE</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.9</span>
       </span>
     </div>
 
@@ -68,7 +68,7 @@
       <h1 data-toc-skip>XenSCE: exploration of a class for Xenium demonstration data</h1>
                         <h4 data-toc-skip class="author">Vincent J. Carey, stvjc at channing.harvard.edu</h4>
             
-            <h4 data-toc-skip class="date">August 20, 2024</h4>
+            <h4 data-toc-skip class="date">August 28, 2024</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/vjcitn/XenSCE/blob/HEAD/vignettes/XenSCE.Rmd"><code>vignettes/XenSCE.Rmd</code></a></small>
       <div class="hidden name"><code>XenSCE.Rmd</code></div>
@@ -107,7 +107,7 @@ blockquote {
 <li><p><strong>Human brain</strong> <a href="https://www.10xgenomics.com/datasets/ffpe-human-brain-cancer-data-with-human-immuno-oncology-profiling-panel-and-custom-add-on-1-standard" class="external-link">FFPE Glioblastoma Data</a>. We have taken several components of the distribution and placed them in an NSF Open Storage Network bucket. The <code>cache_assets</code> function in this package will download and cache about 4GB of compressed sparse matrix and parquet data files; it returns the paths to these resources. The <code>build_demo</code> function creates an instance of <code>XenSCE</code>.</p></li>
 <li><p><strong>Human lung</strong> <a href="https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard" class="external-link">FFPE Lung cancer dataset</a>. We used scripts distributed by scverse to create a zarr-based representation, and used <code>readXenium</code> on the 10x distribution. Use <code>example(sfe2xsce)</code> to retrieve and cache and transform the SpatialFeatureExperiment to a XenSCE instance.</p></li>
 <li><p><strong>Human dermal melanoma</strong> <a href="https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-skin" class="external-link">FFPE Human pan tissue dataset</a>. For this dataset, we retrieved the <code>outs.zip</code> file from this site and ran <code><a href="../reference/ingest_xen.html">XenSCE::ingest_xen</a></code> on the contents, producing a XenSPEP instance which was then saved in an HDF5-backed representation. This, along with the parquet files for cell, nucleus, and transcript coordinates, are zipped together and placed in an Open Storage Network bucket for retrieval via <code>cache_xen_sk</code>.</p></li>
-<li><p><strong>Human prostate adenocarcinoma</strong> <a href="https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-prostate" class="external-link">FFPE Human pan tissue dataset</a>. For this dataset, we retrieved the <code>outs.zip</code> file from this site and ran <code><a href="../reference/ingest_xen.html">XenSCE::ingest_xen</a></code> on the contents, producing a XenSPEP instance which was then saved in an HDF5-backed representation. This, along with the parquet files for cell, nucleus, and transcript coordinates, are zipped together and placed in an Open Storage Network bucket for retrieval via <code>cache_xen_sk</code>.</p></li>
+<li><p><strong>Human prostate adenocarcinoma</strong> <a href="https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-prostate" class="external-link">FFPE Human pan tissue dataset</a>. For this dataset, we retrieved the <code>outs.zip</code> file from this site and ran <code><a href="../reference/ingest_xen.html">XenSCE::ingest_xen</a></code> on the contents, producing a XenSPEP instance which was then saved in an HDF5-backed representation. This, along with the parquet files for cell, nucleus, and transcript coordinates, are zipped together and placed in an Open Storage Network bucket for retrieval via <code>cache_xen_prost</code>.</p></li>
 </ul>
 <!--
 ## Data retrieval and caching
