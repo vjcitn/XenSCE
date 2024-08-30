@@ -1,7 +1,7 @@
 Package: XenSCE
 Date: 2024-08-14
 Title: Simple classes and methods for managing a Xenium exemplar dataset
-Version: 0.0.9
+Version: 0.0.10
 Authors@R: 
     c(person(
         "Vincent", "Carey", role = c("aut", "cre"),
