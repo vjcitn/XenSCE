@@ -10,9 +10,9 @@ if (!exists("luad"))    luad = restoreZipXenSPEP(pa)
 
 explore = function(xspep, what="unknown") {
   stopifnot(is(xspep, "XenSPEP"))
-  rngs = apply(spatialCoords(xspep),2,range)
-  xmid = mean(rngs[,"x_centroid"])
-  ymid = mean(rngs[,"y_centroid"])
+  rngs = apply(spatialCoords(xspep),2,function(x) round(range(x),0))
+  xmid = round(mean(rngs[,"x_centroid"]),0)
+  ymid = round(mean(rngs[,"y_centroid"]),0)
   
   ui = fluidPage(
    sidebarLayout(
