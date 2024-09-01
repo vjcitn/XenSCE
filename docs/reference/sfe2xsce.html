@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">XenSCE</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.12</span>
       </span>
     </div>
 
@@ -84,12 +84,51 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> cch_sL+   ans = HDF5Array::loadHDF5SummarizedExperiment(file.path(td, "lungSFEtxg"))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cch_sL+   SpatialFeatureExperiment::show(ans)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cch_sL+   }</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required namespace: SpatialFeatureExperiment</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> install SpatialFeatureExperiment package to run this example</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> class: SpatialFeatureExperiment </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dim: 534 161894 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> metadata(1): Samples</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> assays(1): counts</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rownames(534): ABCC11 ACE2 ... UnassignedCodeword_0498</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   UnassignedCodeword_0499</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rowData names(3): ID Symbol Type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colnames(161894): aaaaficg-1 aaabbaka-1 ... ojacfhhg-1 ojacpeii-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(9): transcript_counts control_probe_counts ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   nucleus_area sample_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> reducedDimNames(0):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mainExpName: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> altExpNames(0):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> spatialCoords names(2) : x_centroid y_centroid</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> imgData names(4): sample_id image_id data scaleFactor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> unit: micron</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometries:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colGeometries: centroids (POINT), cellSeg (MULTIPOLYGON), nucSeg (MULTIPOLYGON) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rowGeometries: txSpots (MULTIPOINT) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Graphs:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sample01: </span>
 <span class="r-in"><span><span class="va">nx</span> <span class="op">=</span> <span class="fu">sfe2xsce</span><span class="op">(</span><span class="va">ans</span>, BPPARAM<span class="op">=</span><span class="fu">BiocParallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocParallel/man/MulticoreParam-class.html" class="external-link">MulticoreParam</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'ans' not found</span>
 <span class="r-in"><span><span class="va">nx</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'nx' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> class: XenSCE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dim: 534 161894 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> metadata(1): Samples</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> assays(1): counts</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rownames(534): ABCC11 ACE2 ... UnassignedCodeword_0498</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   UnassignedCodeword_0499</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> rowData names(3): ID Symbol Type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colnames(161894): aaaaficg-1 aaabbaka-1 ... ojacfhhg-1 ojacpeii-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(9): transcript_counts control_probe_counts ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   nucleus_area sample_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> reducedDimNames(0):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mainExpName: NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> altExpNames(0):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> spatialCoords names(2) : x_centroid y_centroid</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> imgData names(4): sample_id image_id data scaleFactor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry elements:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 nrow ncol</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> transcripts 10607572    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cellbounds   4044931    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nucbounds    3979037    3</span>
 </code></pre></div>
     </div>
   </div>

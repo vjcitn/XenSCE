@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">XenSCE</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.12</span>
       </span>
     </div>
 
@@ -95,6 +95,10 @@
         </td>
         <td><p>cache and/or retrieve path to an SFE of V1 lung demo data from 10x</p></td>
       </tr><tr><td>
+          <p><code><a href="cache_xen_luad.html">cache_xen_luad()</a></code> </p>
+        </td>
+        <td><p>cache and/or retrieve path to Xenium Lung Adenocarcinoma example data, zipped SPEP accompanied by parquet</p></td>
+      </tr><tr><td>
           <p><code><a href="cache_xen_prost.html">cache_xen_prost()</a></code> </p>
         </td>
         <td><p>cache and/or retrieve path to xenium human prostate adenocarcinoma, 5k genes</p></td>
@@ -123,6 +127,10 @@
         </td>
         <td><p>method for cell boundary extraction</p></td>
       </tr><tr><td>
+          <p><code><a href="getCellBoundaries-XenSPEP-method.html">getCellBoundaries(<i>&lt;XenSPEP&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>method for cell boundary extraction</p></td>
+      </tr><tr><td>
           <p><code><a href="getCellBoundaries.html">getCellBoundaries()</a></code> </p>
         </td>
         <td><p>method for cell boundary extraction</p></td>
@@ -131,11 +139,19 @@
         </td>
         <td><p>method for nucleus boundary extraction</p></td>
       </tr><tr><td>
+          <p><code><a href="getNucleusBoundaries-XenSPEP-method.html">getNucleusBoundaries(<i>&lt;XenSPEP&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>method for nucleus boundary extraction</p></td>
+      </tr><tr><td>
           <p><code><a href="getNucleusBoundaries.html">getNucleusBoundaries()</a></code> </p>
         </td>
         <td><p>method for nucleus boundary extraction</p></td>
       </tr><tr><td>
           <p><code><a href="getTranscripts-XenSCE-method.html">getTranscripts(<i>&lt;XenSCE&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>method for transcript extraction</p></td>
+      </tr><tr><td>
+          <p><code><a href="getTranscripts-XenSPEP-method.html">getTranscripts(<i>&lt;XenSPEP&gt;</i>)</a></code> </p>
         </td>
         <td><p>method for transcript extraction</p></td>
       </tr><tr><td>
@@ -167,6 +183,10 @@
         </td>
         <td><p>utility for dealing with cached Xen_SPEP in temp folder</p></td>
       </tr><tr><td>
+          <p><code><a href="restoreZipXenSPEP.html">restoreZipXenSPEP()</a></code> </p>
+        </td>
+        <td><p>use unzip, readRDS, and loadGeometry to restore a XenSPEP</p></td>
+      </tr><tr><td>
           <p><code><a href="retrieve_demo.html">retrieve_demo()</a></code> </p>
         </td>
         <td><p>retrieve cached demo XenSCE</p></td>
@@ -183,9 +203,17 @@
         </td>
         <td><p>display aspects of XenSPEP</p></td>
       </tr><tr><td>
+          <p><code><a href="view_seg.html">view_seg()</a></code> </p>
+        </td>
+        <td><p>naive polygon viewer</p></td>
+      </tr><tr><td>
           <p><code><a href="xdims.html">xdims()</a></code> </p>
         </td>
         <td><p>helper function for XenSCE show method, producing dimensions for geometry information</p></td>
+      </tr><tr><td>
+          <p><code><a href="zipXenSPEP.html">zipXenSPEP()</a></code> </p>
+        </td>
+        <td><p>serialize the collection of XenSPEP and parquet with zip</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -15,6 +15,7 @@
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_panc_subset.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_sfeLung.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_sfeLung_ntx.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/cache_xen_luad.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_xen_prost.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/cache_xen_sk.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/clip_rect.html</loc></url>
@@ -22,10 +23,13 @@
 <url><loc>https://github.com/vjcitn/XenSCE/reference/e2sym.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/e79sym.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getCellBoundaries-XenSCE-method.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/getCellBoundaries-XenSPEP-method.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getCellBoundaries.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getNucleusBoundaries-XenSCE-method.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/getNucleusBoundaries-XenSPEP-method.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getNucleusBoundaries.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getTranscripts-XenSCE-method.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/getTranscripts-XenSPEP-method.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/getTranscripts.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/index.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/ingest_xen.html</loc></url>
@@ -34,10 +38,13 @@
 <url><loc>https://github.com/vjcitn/XenSCE/reference/panc_sub.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/plotCellBoundaries.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/reset_parq_paths.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/restoreZipXenSPEP.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/retrieve_demo.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/sfe2xsce.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/show-XenSCE-method.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/show-XenSPEP-method.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/view_seg.html</loc></url>
 <url><loc>https://github.com/vjcitn/XenSCE/reference/xdims.html</loc></url>
+<url><loc>https://github.com/vjcitn/XenSCE/reference/zipXenSPEP.html</loc></url>
 </urlset>
 
