@@ -40,6 +40,9 @@ explore = function(xspep, what="unknown") {
     })
    output$map = renderPlot({
     plot(SpatialExperiment::spatialCoords(xspep), pch=".", cex=.5)
+    pmat = rbind(c(input$xstart, input$ystart), c(input$xstart, input$ystart+input$width),
+             c(input$xstart+input$width, input$ystart+input$width), c(input$xstart+input$width, input$ystart))
+    polygon(pmat, col="white", lwd=2, density=0)
     })
    output$showx = renderPrint({
     print(xspep)
