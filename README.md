@@ -30,3 +30,17 @@ Compare to the morphology_focus_0001.ome.tif found in the morphology_focus compo
 
 
 A [pkgdown site](https://vjcitn.github.io/XenSCE) is available.
+
+## Interaction
+
+A shiny app is available in inst/app1 of the sources.
+
+The rectangle shows a region of interest, selectable using sliders:
+
+![](man/figures/appmap.png)
+
+The details:
+
+![](man/figures/appcells.png)
+
+The app can be run on any XenSPEP instance.  
