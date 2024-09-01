@@ -36,6 +36,10 @@ setGeneric("getTranscripts", function(x) standardGeneric("getTranscripts"))
 #' @param x instance of XenSCE
 #' @export
 setMethod("getTranscripts", "XenSCE", function(x) slot(x, "transcripts"))
+#' method for transcript extraction
+#' @param x instance of XenSPEP
+#' @export
+setMethod("getTranscripts", "XenSPEP", function(x) slot(x, "txtab"))
 
 #' method for cell boundary extraction
 #' @param x instance of XenSCE
@@ -45,6 +49,10 @@ setGeneric("getCellBoundaries", function(x) standardGeneric("getCellBoundaries")
 #' @param x instance of XenSCE
 #' @export
 setMethod("getCellBoundaries", "XenSCE", function(x) slot(x, "cellbounds"))
+#' method for cell boundary extraction
+#' @param x instance of XenSPEP
+#' @export
+setMethod("getCellBoundaries", "XenSPEP", function(x) slot(x, "cbtab"))
 
 #' method for nucleus boundary extraction
 #' @param x instance of XenSCE
@@ -54,6 +62,10 @@ setGeneric("getNucleusBoundaries", function(x) standardGeneric("getNucleusBounda
 #' @param x instance of XenSCE
 #' @export
 setMethod("getNucleusBoundaries", "XenSCE", function(x) slot(x, "nucbounds"))
+#' method for nucleus boundary extraction
+#' @param x instance of XenSPEP
+#' @export
+setMethod("getNucleusBoundaries", "XenSPEP", function(x) slot(x, "nbtab"))
 
 chkxsce = function(object) {
  nc = ncol(object)

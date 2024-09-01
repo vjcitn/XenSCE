@@ -7,3 +7,6 @@
 \description{
 manage SpatialExperiment with parquet references
 }
+\note{
+Trying to be lighter weight than XenSCE that uses DelayedArray in ParquetDataFrame.
+}

@@ -4,7 +4,7 @@
 \alias{view_seg}
 \title{naive polygon viewer}
 \usage{
-view_seg(x, xlim, ylim, ...)
+view_seg(x, xlim, ylim, show_tx = FALSE, ...)
 }
 \arguments{
 \item{x}{instance of XenSCE}
@@ -13,13 +13,18 @@ view_seg(x, xlim, ylim, ...)
 
 \item{ylim}{numeric(2) ordered vector of max and min on y}
 
+\item{show_tx}{logical(1) display transcript locations if TRUE, defaults to FALSE.}
+
 \item{\dots}{passed to polygon()}
 }
 \description{
 naive polygon viewer
 }
+\note{
+This is more RAM-sparing than clip_rect followed by view.
+}
 \examples{
 gbm = build_demo()
-out = view_seg(gbm, c(5800, 6500), c(6300, 7000), lwd=.5, col="lightgray")
+out = view_seg(gbm, c(5800, 6500), c(6300, 7000), lwd=.5, col="lightgray", show_tx=TRUE)
 out$ncells
 }

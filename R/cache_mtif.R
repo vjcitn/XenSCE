@@ -112,3 +112,24 @@ cache_xen_sk = function(cache=BiocFileCache::BiocFileCache(),
  bfcadd(cache, rname=basename(url), fpath=url, action="copy", download=TRUE)
 }
 
+
+#' cache and/or retrieve path to Xenium Lung Adenocarcinoma example data, zipped SPEP
+#' accompanied by parquet
+#' @param cache defaults to BiocFileCache::BiocFileCache()
+#' @param url location where tiff file can be retrieved
+#' @examples
+#' if (interactive()) {
+#'    pa = cache_xen_luad()
+#'    luad = restoreZipXenSPEP(pa)
+#'    print(luad)
+#'    print(slot(luad, "cellbounds_path"))
+#'    view_seg(luad, xlim=c(4000,4500), ylim=c(2000,2500))
+#' }
+#' @export
+cache_xen_luad = function(cache=BiocFileCache::BiocFileCache(), 
+   url="https://mghp.osn.xsede.org/bir190004-bucket01/BiocXenData/luad2.zip") {
+ chk = bfcquery(cache, "BiocXenData/luad2.zip")
+ n = nrow(chk)
+ if (n>=1) return(chk[n,]$rpath)
+ bfcadd(cache, rname=basename(url), fpath=url, action="copy", download=TRUE)
+}

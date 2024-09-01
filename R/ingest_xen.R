@@ -6,6 +6,7 @@ setClassUnion("ArrowTabOrNULL", c("Table", "ArrowTabular", "NULL"))
 
 #' manage SpatialExperiment with parquet references
 #' @importClassesFrom SpatialExperiment SpatialExperiment
+#' @note Trying to be lighter weight than XenSCE that uses DelayedArray in ParquetDataFrame.
 #' @export
 setClass("XenSPEP", contains="SpatialExperiment",  # spatial expt with parquet refs
     representation(cellbounds_path="character",

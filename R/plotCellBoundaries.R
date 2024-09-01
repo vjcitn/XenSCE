@@ -19,6 +19,21 @@ bfeatsInBox = function (xsce, feat="cellbounds", xlim, ylim)
     fb[inds,]
 }
 
+newbfinbx = function (xsce, feat = "cellbounds", xlim, ylim) 
+{
+#
+# works with cbtab slot of XenSPEP
+#
+    fb = slot(xsce, feat)
+    xc = fb[, "vertex_x"] 
+    if (isFALSE(is(xc, "numeric"))) xc = xc |> dplyr::collect() |> unlist() |> as.numeric()
+    yc = fb[, "vertex_y"] 
+    if (isFALSE(is(yc, "numeric"))) yc = yc |> dplyr::collect() |> unlist() |> as.numeric()
+    fb[xc >= xlim[1] & xc <= xlim[2] & yc >= ylim[1] & 
+        yc <= ylim[2],]
+}
+
+
 txfeatsInBox = function (xsce, feat="transcripts", xlim, ylim)  # may have colname x or x_location etc.
 {
     fb = slot(xsce, feat)
@@ -66,11 +81,12 @@ clip_rect = function(xsce, xlim, ylim) {
 plotCellBoundaries = function(xsce, add_cent=TRUE, cent_col="red", cent_cex=.2, add_tx=TRUE,
    tx_cex=.1) {
   bb = getCellBoundaries(xsce)
-  bb = bb[bb$cell_id %in% colnames(xsce),]
+  bb = bb[as(bb$cell_id, "character") %in% colnames(xsce),]
   xlim = range(bb$vertex_x)
   ylim = range(bb$vertex_y)
   plot(min(xlim), min(ylim), pch=" ", xlim=xlim, ylim=ylim, xlab="x", ylab="y")
-  sbb = split(as(bb, "data.frame"), bb$cell_id)
+  bid = as.character(bb$cell_id)
+  sbb = split(as(bb, "data.frame"), bid)
   for (i in seq_len(length(sbb))) polygon(sbb[[i]]$vertex_x, sbb[[i]]$vertex_y)
   if (add_cent) points(xsce$x_centroid, xsce$y_centroid, cex=cent_cex, col=cent_col)
   if (add_tx) points(getTranscripts(xsce)$x_location, getTranscripts(xsce)$y_location, cex=tx_cex)

@@ -4,14 +4,20 @@
 \alias{restoreZipXenSPEP}
 \title{use unzip, readRDS, and loadGeometry to restore a XenSPEP}
 \usage{
-restoreZipXenSPEP(zipf)
+restoreZipXenSPEP(zipf, exdir = tempdir())
 }
 \arguments{
 \item{zipf}{character(1) path to zip file created with `zipXenSPEP`}
+
+\item{exdir}{character(1) defaults to tempdir(), where contents are unpacked}
 }
 \value{
 instance of XenSPEP
 }
 \description{
 use unzip, readRDS, and loadGeometry to restore a XenSPEP
+}
+\note{
+Session folder position will change with setwd(), on.exit ensures return to 
+position when started.
 }
