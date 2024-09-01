@@ -6,34 +6,48 @@ library(SpatialExperiment)
 #if (!exists("gbm")) load("gbm.rda")
 
     pa = cache_xen_luad()
-    luad = restoreZipXenSPEP(pa)
+if (!exists("luad"))    luad = restoreZipXenSPEP(pa)
 
-rngs = apply(spatialCoords(luad),2,range)
-xmid = mean(rngs[,"x_centroid"])
-ymid = mean(rngs[,"y_centroid"])
-
-
-
-ui = fluidPage(
- sidebarLayout(
-  sidebarPanel(
-   helpText("view gbm"),
-   sliderInput("xstart", "xstart", min=rngs[1,"x_centroid"], max=rngs[2,"x_centroid"], step=50, value=xmid),
-   sliderInput("ystart", "ystart", min=rngs[1,"y_centroid"], max=rngs[2,"y_centroid"], step=50, value=ymid),
-   sliderInput("width", "width", min=200, max=2000, step=100, value=400),
-   actionButton("go", "go", class="btn-success")
-   ),
-  mainPanel(
-   tabsetPanel(
-    tabPanel("cells", plotOutput("cells", height="600px", width="600px"))
+explore = function(xspep, what="unknown") {
+  stopifnot(is(xspep, "XenSPEP"))
+  rngs = apply(spatialCoords(xspep),2,range)
+  xmid = mean(rngs[,"x_centroid"])
+  ymid = mean(rngs[,"y_centroid"])
+  
+  ui = fluidPage(
+   sidebarLayout(
+    sidebarPanel(
+     uiOutput("topbox"),
+     sliderInput("xstart", "xstart", min=rngs[1,"x_centroid"], max=rngs[2,"x_centroid"], step=50, value=xmid),
+     sliderInput("ystart", "ystart", min=rngs[1,"y_centroid"], max=rngs[2,"y_centroid"], step=50, value=ymid),
+     sliderInput("width", "width", min=200, max=2000, step=100, value=400),
+     actionButton("go", "go", class="btn-success")
+     ),
+    mainPanel(
+     tabsetPanel(
+      tabPanel("cells", plotOutput("cells", height="600px", width="600px")),
+      tabPanel("map", plotOutput("map", height="600px", width="600px")),
+      tabPanel("about", verbatimTextOutput("showx"))
+     )
+    )
    )
   )
- )
-)
-
-server = function(input, output) {
- output$cells = renderPlot({
-  input$go
-  view_seg(luad, c(input$xstart, input$xstart+input$width), c(input$ystart, input$ystart+input$width))
-  })
+  
+  server = function(input, output) {
+   output$cells = renderPlot({
+    input$go
+    view_seg(xspep, c(input$xstart, input$xstart+input$width), c(input$ystart, input$ystart+input$width))
+    })
+   output$map = renderPlot({
+    plot(SpatialExperiment::spatialCoords(xspep), pch=".", cex=.5)
+    })
+   output$showx = renderPrint({
+    print(xspep)
+    })
+   output$topbox = renderUI({
+      helpText(sprintf("view %s", what))
+    })
+  }
+  
+  runApp(list(ui=ui, server=server))
 }
