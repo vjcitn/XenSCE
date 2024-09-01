@@ -20,8 +20,8 @@ explore = function(xspep, what="unknown") {
      uiOutput("topbox"),
      sliderInput("xstart", "xstart", min=rngs[1,"x_centroid"], max=rngs[2,"x_centroid"], step=50, value=xmid),
      sliderInput("ystart", "ystart", min=rngs[1,"y_centroid"], max=rngs[2,"y_centroid"], step=50, value=ymid),
-     sliderInput("width", "width", min=200, max=3000, step=100, value=400),
-     actionButton("go", "go", class="btn-success")
+     sliderInput("width", "width", min=200, max=3000, step=100, value=400)#,
+#     actionButton("go", "go", class="btn-success")
      ),
     mainPanel(
      tabsetPanel(
