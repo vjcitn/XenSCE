@@ -12,7 +12,7 @@ zipXenSPEP = function(xsp, targetfile) {
   pas = unlist(lapply(c("cellbounds_path", "nucbounds_path", "tx_path"),
       function(x) slot(xsp, x)))
   rdstarg = paste0(basename(tempfile()), ".rds")
-  saveRDS(xsp, file=rdstarg)
+  saveRDS(xsp, file=rdstarg, compress="xz")
   zip(targetfile, c(rdstarg, pas))
 }
 

@@ -1,6 +1,7 @@
 
 #' print method for ggplot2-prepared XenSPEP
 #' @param x instance of S3 class `xen_ggprep`
+#' @param \dots not used
 #' @export
 print_xen_ggprep = function(x, ...) {
   cat(sprintf("xen_ggprep instance for %d cells with %d cell boundary vertices.\n", ncol(x$sampd), nrow(x$bounds)))
@@ -36,6 +37,8 @@ ggprep_seg = function(xsce, xlim=c(5800,6200), ylim=c(6300, 6700)) {
 #' plot method for ggplot2-prepared XenSPEP
 #' @importFrom ggplot2 ggplot aes geom_polygon
 #' @param x instance of S3 class `xen_ggprep`
+#' @param y not used
+#' @param \dots not used
 #' @note roxygen had problems with this
 #' @export
 plot_xen_ggprep = function(x, y, ...) {

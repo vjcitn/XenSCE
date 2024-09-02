@@ -8,6 +8,8 @@ print_xen_ggprep(x, ...)
 }
 \arguments{
 \item{x}{instance of S3 class `xen_ggprep`}
+
+\item{\dots}{not used}
 }
 \description{
 print method for ggplot2-prepared XenSPEP

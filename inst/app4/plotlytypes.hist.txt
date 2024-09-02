@@ -1,0 +1,61 @@
+library(shiny)
+?sliderInput
+runApp()
+runApp()
+runApp()
+runApp()
+?renderPrint
+?renderPrint
+?renderPrint
+runApp()
+runApp()
+runApp()
+?checkboxInput
+runApp()
+?renderUI
+?uiOutput
+runApp()
+runApp()
+ls()
+restoreZipXenSPEP("luad2.zip") -> luad
+luad
+library(SingleR)
+library(celldex)
+library(scater)
+luad = logNormCounts(luad)
+cc = colSums(assay(luad))
+sum(cc==0)
+luad = luad[,-which(cc==0)]
+luad = logNormCounts(luad)
+library(SingleR)
+args(SingleR)
+hpca = HumanPrimaryCellAtlasData()
+ss  = SingleR(luad, hpca, hpca$label.fine)
+luad
+rownames(luad) = make.names(rowData(luad)$Symbol)
+ss  = SingleR(luad, hpca, hpca$label.fine)
+dim(ss)
+head(ss)
+table(ss$labels)
+ spl = strsplit(ss$labels)
+ spl = strsplit(ss$labels, ":")
+t1 = sapply(spl, "[", 1)
+table(t1)
+luad$cell_type
+luad$cell_type = t1
+library(ggplot2)
+mydf = data.frame(x=spatialCoords(luad)[,1], y=spatialCoords(luad)[,2], type=t1)
+head(mydf)
+ggplot(mydf, aes(x=x,y=y,colour=type)) + geom_point()
+savehistory(file="gettypes.hist.txt")
+ggplot(mydf, aes(x=x,y=y,colour=type)) + geom_point() -> myg
+ggplotly(myg)
+library(plotly)
+ggplotly(myg)
+ggplot(mydf, aes(x=x,y=y,colour=type)) + geom_point(alpha=.5, size=.3) -> myg
+ggplotly(myg)
+head(ss)
+max(ss[1,"scores"])
+max(ss[2,"scores"])
+ss[2,"labels"]
+savehistory(file="plotlytypes.hist.txt")

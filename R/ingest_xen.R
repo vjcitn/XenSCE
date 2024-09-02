@@ -1,6 +1,7 @@
 setOldClass("ArrowTabular")
+setOldClass("arrow_dplyr_query")
 setOldClass("Table")
-setClassUnion("ArrowTabOrNULL", c("Table", "ArrowTabular", "NULL"))
+setClassUnion("ArrowTabOrNULL", c("Table", "ArrowTabular", "arrow_dplyr_query", "NULL"))
 #library(SpatialExperiment)
 
 
@@ -33,6 +34,32 @@ setMethod("show", "XenSPEP", function(object) {
       cat("Geometry elements loaded.\n")
        }
 } )
+
+#' formal bracket definition, that leaves parquet geometry information alone.
+#' @param x instance of XenSPEP
+#' @param i feature selection
+#' @param j cell selection
+#' @param \dots passed to SpatialExperiment methods
+#' @param drop logical(1)
+#' @note Gives a message and calls callNextMethod.
+#' @export
+setMethod("[", c("XenSPEP"), function (x, i, j, ..., drop = TRUE) {
+#  if (!missing(i)) stop("method not defined")
+#  if (!missing(j)) {
+#     co = SpatialExperiment::spatialCoords(x)
+#     rngs = apply(co, 2, range)
+#     x@cbtab = x@cbtab |> dplyr::filter(vertex_x > rngs[1,1] & vertex_x < rngs[2,1] &
+#           vertex_y > rngs[1,2] & vertex_y < rngs[2,2])
+#     x@nbtab = x@nbtab |> dplyr::filter(vertex_x > rngs[1,1] & vertex_x < rngs[2,1] &
+#           vertex_y > rngs[1,2] & vertex_y < rngs[2,2])
+#     x@txtab = x@txtab |> dplyr::filter(x_location > rngs[1,1] & x_location < rngs[2,1] &
+#           y_location > rngs[1,2] & y_location < rngs[2,2])
+#     }
+     message("Parquet geometry data untouched by subsetting.  Affects SpatialExperiment content only")
+     callNextMethod()
+   })
+     
+
 
 
 setValidity("XenSPEP", function(object) {

@@ -8,6 +8,10 @@ plot_xen_ggprep(x, y, ...)
 }
 \arguments{
 \item{x}{instance of S3 class `xen_ggprep`}
+
+\item{y}{not used}
+
+\item{\dots}{not used}
 }
 \description{
 plot method for ggplot2-prepared XenSPEP

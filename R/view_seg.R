@@ -20,6 +20,7 @@ view_seg = function(x, xlim, ylim, show_tx=FALSE, ...) {
   cb = getCellBoundaries(x)
   cb2 = cb[cb$vertex_x > xlim[1] & cb$vertex_x < xlim[2] & cb$vertex_y > ylim[1] & cb$vertex_y < ylim[2],]
   cb2w = as.data.frame(cb2)
+  if (nrow(cb2w)==0) stop("no observations for cell boundaries.")
   scb2w = split(cb2w, cb2w$cell_id)
   ncells = length(scb2w)
   rngs = sapply(cb2w[,c("vertex_x", "vertex_y")], range)

@@ -48,3 +48,6 @@ CD4-expressing cells seem complementary to those expressing EPCAM.
 ![](man/figures/newappcd4.png)
 
 An example is available at [shinyapps.io](https://vjcitn.shinyapps.io/XenLUAD).
+
+Another example with a 5K panel
+is available at [shinyapps.io](https://vjcitn.shinyapps.io/XenPDMel).
