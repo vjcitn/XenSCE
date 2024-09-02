@@ -33,14 +33,18 @@ A [pkgdown site](https://vjcitn.github.io/XenSCE) is available.
 
 ## Interaction
 
-A shiny app is available in inst/app1 of the sources.
+A shiny app is available in inst/app3 of the sources.
 
 The rectangle shows a region of interest, selectable using sliders:
 
-![](man/figures/appmap.png)
+![](man/figures/newappmap.png)
 
-The details:
+The details can include positions of transcripts for selected genes:
 
-![](man/figures/appcells.png)
+![](man/figures/newapp.png)
 
-The app can be run on any XenSPEP instance.  
+CD4-expressing cells seem complementary to those expressing EPCAM.
+
+![](man/figures/newappcd4.png)
+
+An example is available at [shinyapps.io](https://vjcitn.shinyapps.io/XenLUAD).
