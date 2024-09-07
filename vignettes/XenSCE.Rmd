@@ -61,7 +61,7 @@ This package is based on publicly available datasets.
 `SpatialFeatureExperiment::readXenium(SFEData::XeniumOutput("v2"))`
 but the assay has been replaced with an equivalent dgCMatrix instance, and
 the geometry data are provided as thin DataFrame instances (thin meaning
-each coordinate has a separate row, whereas the SpatialFeatureExperiment
+each coordinate has a separate row), whereas the SpatialFeatureExperiment
 uses simple features to organize geometry information on cells, nuclei,
 and transcripts.
 
@@ -96,27 +96,53 @@ and placed in an Open Storage Network bucket for retrieval via
 - **Human Lung (SPEP example)** Again working with [FFPE Lung cancer preview](https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard), but working with `ingest_xen`
 and `zipXenSPEP` to produce a portable archive.  Use `example(cache_xen_luad)` to obtain this instance of XenSPEP.
 
-<!--
-## Data retrieval and caching
-
-Use `cache_assets()` to retrieve brain/GBM data from the web.  Use
-`x = build_demo()` to produce `x`, an instance of `XenSCE`.
-Use `cache_demo(x)` to save this in cache, and
-`y = retrieve_demo()` to restore the cached image
-in `y`.  Once this cycle has been completed, `retrieve_demo`
-can be used in any session to obtain the instance.
--->
-
 ## A quick look
 
 ### Small in-memory example
+
+Boundary coordinates are in memory, in S4Vector::DataFrame instances.
 
 ```{r dolit, fig.width=6, fig.height=6}
 library(XenSCE)
 data(panc_sub)
 panc_sub
-plot(panc_sub$x_centroid, panc_sub$y_centroid, pch="." , cex=1.5, xlab="x", ylab="y", main="cell centroids")
+plot(SpatialExperiment::spatialCoords(panc_sub), 
+   pch="." , cex=1.5, xlab="x", ylab="y", main="cell centroids")
 ```
+
+### Larger hybrid example
+
+In this example, transcript counts are in memory
+in a sparse matrix, but geometry information is
+handled in parquet.  The `view_seg_g2` function
+allows selection of two gene symbols, and
+cells are colored according to single or double
+occupancy.
+
+```{r dolung, fig.width=7, fig.height=7,message=FALSE}
+luad = cache_xen_luad()
+pa = cache_xen_luad()
+luad = restoreZipXenSPEP(pa)
+rownames(luad) = make.names(SummarizedExperiment:::rowData(luad)$Symbol, unique=TRUE)
+out = view_seg_g2(luad, c(5800, 6300), c(1300, 1800), lwd=.5, gene1="CD4", gene2="EPCAM")
+legend(5800,1390, fill=c("purple", "cyan", "pink"), legend=c("CD4", "EPCAM", "both"))
+out$ncells
+```
+
+### Interactivity
+
+In `inst/app4`, code is provided to work with the primary dermal melanoma
+dataset.  A map of the cell coordinates can drive focused exploration.  The
+region of interest is shown by a whitened rectangle in the upper left corner.
+
+![](./fblmap.png)
+
+Cells are colored by quintile of size.  Points where FBL transcripts
+are found are plotted as dots.
+
+![](./FBLsketch.png)
+
+More work is needed to identify useful exploratory visualizations.
 
 ### Large disk-based example
 
@@ -174,6 +200,7 @@ shipped with the data.
 `clip_rect` is an endomorphism that restricts the cells in an XenSCE instance
 to those with centroids in given boundaries in x and y.
 By default, cell centroid and transcript locations are added.
+AT PRESENT (0.0.15) THIS ONLY WORKS FOR IN-MEMORY/NON-PARQUET-BASED ExAMPLES.
 
 
 ```{r dosimpa,fig.height=6, fig.width=6}

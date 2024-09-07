@@ -29,5 +29,5 @@ SystemRequirements: LTLA/ParquetDataFrame
 Collate: ggcode.R build_demo.R  cache_assets.R  data.R   ebapp.R ingest_xen.R	 
          plotCellBoundaries.R  sfe2xsce.R  XenSCE_class.R
          build_panc_subset.R  cache_mtif.R    e2sym.R  
-         reset_parq_paths.R	  view_seg.R  zipXenSPEP.R 
+         reset_parq_paths.R	  view_seg.R  zipXenSPEP.R view_seg_g.R
 
